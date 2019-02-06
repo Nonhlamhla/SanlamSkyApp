@@ -32,6 +32,11 @@ public class Mtn extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mtn);
 
+
+        //IMPLEMENTS SERVER
+        t = new Thread(new ServerConnection());
+        t.start();
+
         mtn_Spinner = findViewById(R.id.mtn_Spinner);
 
         List<String> simpleList = Arrays.asList(getResources().getStringArray(R.array.mtn_items));
@@ -53,10 +58,6 @@ public class Mtn extends AppCompatActivity {
                         break;
 
                     case 1:
-
-                        //IMPLEMENTS SERVER
-                        t = new Thread(new ServerConnection());
-                        t.start();
 
                         ServerConnection serverConnection = new ServerConnection();
                         try {
