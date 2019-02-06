@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical"
+    tools:context=".Activities.LandingsScreen">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_gravity="center" >
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="match_parent"
+                    android:layout_height="210dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="0dp"
+                    android:src="@drawable/rlogo" />
+
+
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/linearLayout5"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/txt_ForgotPW"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="60dp"
+                    android:text="Before buying a pin please make sure that your application is allowed to make phone calls. Open Settings/Applications/Select/com.rgroup.rssy/scroll down to Permissions/Allow phone."
+                    android:paddingRight="8dp"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="#ffff"
+                    android:textAlignment="center"
+                    android:textSize="18sp"
+                    android:gravity="start" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:weightSum="1"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+                <Button
+                    android:layout_width="350dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btn_Vend_Airtime"
+                    android:background="@drawable/oval_btn"
+                    android:text="Vend Airtime"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.32"
+                    android:elevation="0dp"
+                    android:layout_marginBottom="10dp"
+                    android:layout_marginTop="40dp"
+                    android:textColor="@android:color/white"
+                    style="@style/Widget.AppCompat.Button.Small"
+                    android:padding="8dp" />
+
+                <Button
+                    android:layout_width="350dp"
+                    android:layout_height="match_parent"
+                    android:id="@+id/btn_Balance_Enquiry"
+                    android:background="@drawable/oval_btn"
+                    android:text="Balance Enquiry"
+                    android:textAllCaps="false"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_weight="0.32"
+                    android:elevation="0dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="10dp"
+                    android:textColor="@android:color/white"
+                    style="@style/Widget.AppCompat.Button.Small"
+                    android:padding="8dp" />
+
+            </LinearLayout>
+
+
+
+            <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:weightSum="1"-->
+            <!--android:layout_marginTop="5dp"-->
+            <!--android:orientation="vertical">-->
+
+            <!--<Button-->
+            <!--android:layout_width="350dp"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:id="@+id/btn_Log_in"-->
+            <!--android:background="@drawable/oval_btn"-->
+            <!--android:text="Login"-->
+            <!--android:textAllCaps="false"-->
+            <!--android:textStyle="bold"-->
+            <!--android:textSize="18sp"-->
+            <!--android:layout_gravity="center_horizontal"-->
+            <!--android:layout_weight="0.32"-->
+            <!--android:elevation="0dp"-->
+            <!--android:layout_marginTop="15dp"-->
+            <!--android:textColor="@android:color/white"-->
+            <!--style="@style/Widget.AppCompat.Button.Small"-->
+            <!--android:padding="8dp" />-->
+
+            <!--</LinearLayout>-->
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

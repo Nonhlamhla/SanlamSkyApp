@@ -1,0 +1,75 @@
+<resources>
+    <string name="app_name">SanlamSkyApp</string>
+
+    <string-array name="mtn_items">
+        <item>Airtime/Data</item>
+        <item>MTN R2</item>
+        <item>MTN R4 Monthly Internet 5MB</item>
+        <item>MTN R4 One Day 20MB</item>
+        <item>MTN R5</item>
+        <item>MTN R6 One Day 35MB</item>
+        <item>MTN R7 One Day 50MB</item>
+        <item>MTN R10</item>
+        <item>MTN R60</item>
+        <item>MTN R105 Monthly Internet </item>
+        <item>MTN R149 Monthly Data 1GB</item>
+        <item>MTN R160 Monthly Internet 1GB</item>
+        <item>MTN R180</item>
+        <item>MTN R260 Monthly Internet 2GB</item>
+        <item>MTN R330 Monthly Internet 3GB</item>
+    </string-array>
+
+
+    <string-array name="voda_items">
+        <item>Airtime/Data</item>
+        <item>Vodacom R12 Data 30MB</item>
+        <item>Vodacom R29</item>
+        <item>Vodacom R29 Data 100MB</item>
+        <item>Vodacom R49 Sms</item>
+        <item>Vodacom R55</item>
+        <item>Vodacom R63 Data 250MB</item>
+        <item>Vodacom R100 Data 500MB</item>
+        <item>Vodacom R110</item>
+        <item>Vodacom R149 Data 1GB</item>
+        <item>Vodacom R275</item>
+    </string-array>
+
+
+    <string-array name="cell_items">
+        <item>Airtime/Data</item>
+        <item>CELL C R10</item>
+        <item>CELL C R11 All in One 20</item>
+        <item>CELL C R13 Data 50MB</item>
+        <item>CELL C R16 Data 500MB</item>
+        <item>CELL C R21 All in One 45</item>
+        <item>CELL C R25</item>
+        <item>CELL C R85 Data</item>
+        <item>CELL C R89 All in One 300</item>
+        <item>CELL C R90 Data 500MB</item>
+        <item>CELL C R99 Data</item>
+        <item>CELL C R149 Data 1GB</item>
+        <item>CELL C R150</item>
+        <item>CELL C R199 All in One 750</item>
+        <item></item>
+    </string-array>
+
+
+    <string-array name="Telkom_items">
+        <item>Airtime/Data</item>
+        <item>Telkom Data 100MB R29</item>
+        <item>Telkom Mobile R30</item>
+        <item>Telkom Data 250MB R39</item>
+        <item>Telkom Weekend 500MB R39</item>
+        <item>Telkom Mobile R50</item>
+        <item>Telkom Weekend 1GB R59</item>
+        <item>Telkom Data 500MB R69</item>
+        <item>Telkom FreeMeBoost 500MB R69</item>
+        <item>Telkom Data 3GB R199</item>
+        <item>Telkom Mobile R250</item>
+        <item>Telkom Data 5GB R299</item>
+        <item>Telkom FreeMeBoost 5GB R299</item>
+        <item>Telkom FreeMeBoost 10GB R399</item>
+        <item>Telkom Data 10GB R499</item>
+    </string-array>
+
+</resources>

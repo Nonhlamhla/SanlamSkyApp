@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.nonhlanhla.sanlamskyapp">
+
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".Activities.Login">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".Activities.CellC" />
+        <activity android:name=".Activities.CellVend_1" />
+        <activity android:name=".Activities.LandingsScreen" />
+        <activity android:name=".BalanceEnquiryActivity" />
+        <activity android:name=".Activities.Mtn" />
+        <activity android:name=".Activities.MtnVend_1" />
+        <activity android:name=".Activities.Telkom" />
+        <activity android:name=".Activities.TelkomVend_1" />
+        <activity android:name=".Activities.VendActivity" />
+        <activity android:name=".Activities.Voda" />
+        <activity android:name=".Activities.VodaVend_1"></activity>
+    </application>
+
+</manifest>
