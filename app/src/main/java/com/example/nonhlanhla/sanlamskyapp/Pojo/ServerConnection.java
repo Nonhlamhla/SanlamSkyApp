@@ -3,74 +3,31 @@ package com.example.nonhlanhla.sanlamskyapp.Pojo;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
 
+
 import com.example.nonhlanhla.sanlamskyapp.Activities.Mtn;
 
 import java.io.DataInputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
-import java.io.PrintWriter;
 import java.net.Socket;
 import java.nio.charset.StandardCharsets;
 import java.util.logging.Logger;
 
-public class ServerConnection implements Runnable{
+public class ServerConnection implements Runnable {
 
 
     //SERVER
-    Socket socket;
-    PrintWriter printWriter;
-    private static InputStream inputStream;
     private final String characterEncoding = "UTF-8";
+
+    private static DataInputStream is;
+    private static Socket socketConnection;
+    private static OutputStream os;
     private static final Logger logger = Logger.getLogger(Mtn.class.getName());
 
 
-        @Override
-        public void run() {
-
-            try {
-
-                //Opens the connection to the host and port number
-                logger.info("Sockets connections");
-                Socket echoSocket = new Socket("196.31.118.146", 3110);
-                OutputStream os = echoSocket.getOutputStream();
-                DataInputStream is = new DataInputStream(echoSocket.getInputStream());
-
-                //Checks if theres a connection
-
-                if (echoSocket.isConnected()) {
-                    logger.info("Connected");
-                }
-                if (!echoSocket.isConnected()) {
-                    logger.info("Not connected");
-                }
-
-
-                //closes connection
-                os.close();
-                is.close();
-                echoSocket.close();
-            } catch (Exception e) {
-                System.err.println("Exception:  " + e);
-            }
-
-        }
-
-        @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-        public void sendData(String msg, DataInputStream is, OutputStream os) throws IOException {
-
-            msg = "Hi VS17188N00794|18300";
-            int vMessageLenght = msg.length();
-
-            String vEncStringFromServer = communicateMessage(is, os, vMessageLenght, msg);
-            System.out.println("Actual message from the server " + vEncStringFromServer);
-
-        }
-
     @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-    private String communicateMessage(DataInputStream is, OutputStream os, int length, String
-            msg) throws IOException {
-        // initiates the 2 byte message to be sent
+    public String sendData(String msg, int length) throws IOException {
+
         byte[] vTestArray = new byte[2];
         vTestArray[0] = Byte.parseByte(Integer.toHexString(0), 16);
         vTestArray[1] = Byte.parseByte(Integer.toHexString(length + 2), 16);
@@ -80,9 +37,9 @@ public class ServerConnection implements Runnable{
         System.arraycopy(vTestArray, 0, vSend, 0, vTestArray.length);
         System.arraycopy(vFuntion, 0, vSend, vTestArray.length, vFuntion.length);
 
-        //writes command to server
-        os.write(vSend);
-        os.flush();
+
+
+
 
         //reads the response
         byte[] data = new byte[2];
@@ -106,5 +63,44 @@ public class ServerConnection implements Runnable{
         is.read(vMessageDecode, 0, vMessageDecode.length);
         String vEncStringFromServer = new String(vMessageDecode, StandardCharsets.UTF_8);
         return vEncStringFromServer;
+    }
+
+
+    @Override
+    public void run() {
+/**
+ * Initializes Server Connection
+ */
+
+        try {
+
+            //Opens the connection to the host and port number
+            logger.info("Sockets connections");
+            Socket socketConnection = new Socket("196.31.118.146", 3110);
+            OutputStream os = socketConnection.getOutputStream();
+            DataInputStream is = new DataInputStream(socketConnection.getInputStream());
+
+            /**
+             * Checks if there is a connection
+             */
+
+            if (socketConnection.isConnected()) {
+                logger.info("Connected");
+
+            }
+            if (!socketConnection.isConnected()) {
+                logger.info("Not connected");
+            }
+
+
+            /**
+             * Closes Connection
+             */
+            os.close();
+            is.close();
+            socketConnection.close();
+        } catch (Exception e) {
+            System.err.println("Exception:  " + e);
+        }
     }
 }

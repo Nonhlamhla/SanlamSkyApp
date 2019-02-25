@@ -4,78 +4,102 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/back_ground_color"
     android:orientation="vertical"
     tools:context=".Activities.Mtn">
 
-
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@color/back_ground_color"
+        android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/header_bg"
-        android:layout_centerInParent="true"/>
-
-
-        <TextView
-            android:id="@+id/tv_MTN"
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:text="Mtn"
-            android:textAlignment="center"
-            android:textColor="@android:color/holo_orange_light"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="72dp"
-            android:layout_marginLeft="20dp" />
+            android:layout_marginTop="10dp">
 
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/header_bg" />
 
-    </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="29dp"
+                    android:gravity="center"
+                    android:text="Mtn"
+                    android:textColor="#ffbe00"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
 
         <ImageView
-            android:id="@+id/iv_MTN_icon"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:padding="8dp"
-            android:src="@drawable/one"
-            android:layout_marginLeft="50dp"
-            />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/one" />
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/mtn_Spinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:autofillHints="MM"
+                    android:padding="16dp"
+                    android:textColorHint="@android:color/white" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/sanlam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:paddingRight="8dp"
+                android:text="Powered by Sanlam Sky"
+                android:textAlignment="textEnd"
+                android:textColor="@android:color/white"
+                android:textColorHint="#ffff"
+                android:textSize="16sp"/>
+
+        </LinearLayout>
 
     </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp">
-
-        <Spinner
-            android:id="@+id/mtn_Spinner"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:padding="16dp">
-
-            <!--
-           android:entries="@array/mtn_items"
-           android:prompt="AirTime/Data"
-           android:DrawSelectorOnTop="true"-->
-
-        </Spinner>
-
-
-    </RelativeLayout>
-
 </LinearLayout>

@@ -4,74 +4,99 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
+    android:background="@color/back_ground_color"
     android:orientation="vertical"
     tools:context=".Activities.CellC">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent"
+        android:background="@color/back_ground_color"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="120dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/header_bg" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="29dp"
+                    android:gravity="center"
+                    android:text="Cell C"
+                    android:textColor="#f16821"
+                    android:textSize="14sp"
+                    android:textStyle="bold"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/header_bg"
-            android:layout_centerInParent="true"/>
+            android:layout_gravity="center"
+            android:src="@drawable/three" />
 
-
-        <TextView
-            android:id="@+id/tv_Cell"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:padding="8dp"
-            android:text="Cell C"
-            android:textAlignment="center"
-            android:textColor="@android:color/holo_orange_dark"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            android:layout_marginTop="72dp"
-            android:layout_marginLeft="20dp"/>
+            android:layout_weight="1"
+            android:orientation="vertical">
 
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:orientation="horizontal">
 
-    </RelativeLayout>
+                <Spinner
+                    android:id="@+id/cell_Spinner"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:padding="16dp">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:orientation="horizontal"
-        >
+                </Spinner>
 
-        <ImageView
-            android:id="@+id/iv_CELL_icon"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:padding="8dp"
-            android:src="@drawable/three"
-            android:layout_marginLeft="50dp"
-            />
+            </RelativeLayout>
+        </LinearLayout>
 
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginTop="30dp">
-
-        <Spinner
-            android:id="@+id/cell_Spinner"
-            android:layout_width="fill_parent"
+        <LinearLayout
+            android:id="@+id/linearLayout7"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"
-            android:padding="16dp">
+            android:gravity="bottom"
+            android:orientation="horizontal">
 
-        </Spinner>
+            <TextView
+                android:id="@+id/sanlam"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:paddingRight="8dp"
+                android:text="Powered by Sanlam Sky"
+                android:textAlignment="textEnd"
+                android:textColor="@android:color/white"
+                android:textColorHint="#ffff"
+                android:textSize="16sp"/>
 
+        </LinearLayout>
 
-    </RelativeLayout>
-
+</LinearLayout>
 </LinearLayout>
