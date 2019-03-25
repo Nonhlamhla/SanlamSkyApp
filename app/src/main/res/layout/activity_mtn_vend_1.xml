@@ -81,7 +81,7 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:text="MTN2"
+                        android:text="MTN"
                         android:textColor="@android:color/white"
                         android:textSize="16sp"
                         android:textStyle="bold" />
@@ -108,7 +108,7 @@
                         android:textStyle="bold" />
 
                     <TextView
-                        android:id="@+id/btn_SignUp"
+                        android:id="@+id/textView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentTop="true"
@@ -183,24 +183,24 @@
                         android:layout_below="@+id/tv_3"
                         android:layout_gravity="center_vertical"
                         android:gravity="center_vertical"
-                        android:text="Amount:"
+                        android:text="Amount: R"
                         android:textColor="@android:color/white"
                         android:textColorHint="@android:color/darker_gray"
                         android:textStyle="bold"
                         android:layout_alignLeft="@+id/tv_0" />
 
                     <TextView
-                        android:id="@+id/tv_6"
+                        android:id="@+id/tv_AirAmount"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/tv_3"
                         android:layout_gravity="center_vertical|right"
                         android:layout_toEndOf="@+id/tv_5"
                         android:gravity="center_vertical|right"
-                        android:text="R2"
+                        android:text="2"
                         android:textColor="@android:color/white"
                         android:layout_toRightOf="@+id/tv_5"
-                        android:layout_marginLeft="5dp"/>
+                        android:layout_marginLeft="3dp"/>
 
 
                 </RelativeLayout>

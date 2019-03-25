@@ -62,7 +62,8 @@
                             android:padding="8dp"
                             android:textColor="@android:color/white"
                             android:textColorHint="#ffff"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:inputType="number"/>
 
                     </RelativeLayout>
 
@@ -85,7 +86,9 @@
                             android:padding="8dp"
                             android:textColor="@android:color/white"
                             android:textColorHint="#ffff"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:inputType="textPassword"
+                            />
 
 
                     </RelativeLayout>
@@ -97,6 +100,14 @@
                         android:layout_height="wrap_content"
                         android:weightSum="1">
 
+                        <android.support.v7.widget.AppCompatCheckBox
+                            android:id="@+id/checkbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Show Password"
+                            android:textColor="@android:color/white"
+                            android:checked="false"/>
+
                         <TextView
                             android:id="@+id/txt_ForgotPW"
                             android:layout_width="match_parent"
@@ -107,9 +118,12 @@
                             android:textAlignment="textEnd"
                             android:textColor="@android:color/white"
                             android:textColorHint="#ffff"
-                            android:textSize="18sp" />
+                            android:textSize="18sp"
+                            android:layout_marginTop="24dp"/>
 
                     </LinearLayout>
+
+
 
 
                 </LinearLayout>

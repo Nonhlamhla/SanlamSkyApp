@@ -1,19 +1,19 @@
 package com.example.nonhlanhla.sanlamskyapp.Pojo;
 
 import android.os.Build;
-        import android.support.annotation.RequiresApi;
+import android.support.annotation.RequiresApi;
 
 
-        import com.example.nonhlanhla.sanlamskyapp.Activities.Mtn;
+import com.example.nonhlanhla.sanlamskyapp.Activities.Mtn;
 
-        import java.io.DataInputStream;
-        import java.io.IOException;
-        import java.io.InputStream;
-        import java.io.OutputStream;
-        import java.io.PrintWriter;
-        import java.net.Socket;
-        import java.nio.charset.StandardCharsets;
-        import java.util.logging.Logger;
+import java.io.DataInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.io.PrintWriter;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.util.logging.Logger;
 
 public class ServerConnection implements Runnable {
 
@@ -107,7 +107,6 @@ public class ServerConnection implements Runnable {
         return vEncStringFromServer;
     }
 }
-
 
 
 //import android.os.Build;

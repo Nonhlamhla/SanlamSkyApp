@@ -8,6 +8,8 @@ import com.example.nonhlanhla.sanlamskyapp.R;
 
 public class MtnVend_1 extends AppCompatActivity {
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

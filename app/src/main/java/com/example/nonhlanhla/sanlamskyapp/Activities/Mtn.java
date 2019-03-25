@@ -1,202 +1,257 @@
 package com.example.nonhlanhla.sanlamskyapp.Activities;
 
 
-import android.annotation.TargetApi;
-import android.content.Intent;
-import android.os.Build;
-import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.nonhlanhla.sanlamskyapp.Pojo.ServerConnection;
 import com.example.nonhlanhla.sanlamskyapp.R;
 
-import java.io.IOException;
-import java.util.Arrays;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.InputStream;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class Mtn extends AppCompatActivity {
 
-    Spinner mtn_Spinner;
-    Thread t;
-    private String s;
 
+    private Spinner mtn_Spinner;
+    private TextView privTV;
+    private Socket skt;
+    private String sIP = "196.31.118.146";
+    private int nPN = 3110;
+    private String all_mtn = "Airtime/Data,MTN R2,MTN R4 Monthly Internet 5MB,MTN R4 One Day 20MB,MTN R5,MTN R6 One Day 35MB,MTN R7 One Day 50MB,MTN R10," +
+            "MTN R60,MTN R105 Monthly Internet,MTN R149 Monthly Data 1GB,MTN R160 Monthly Internet 1GB,MTN R180,MTN R260 Monthly Internet 2GB,MTN R330 Monthly Internet 3GB";
+    private String prm;
+    private String msg0;
+    private String msg1;
+    private String msg2;
+    private Thread thr;
+    private Timer tmr1;
 
-    @TargetApi(Build.VERSION_CODES.KITKAT)
-    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(final Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_mtn);
 
-        /**
-         * Implements Runnable Thread
-         */
-        t = new Thread(new ServerConnection());
-        t.start();
-
-
-            mtn_Spinner = findViewById(R.id.mtn_Spinner);
-            List<String> simpleList = Arrays.asList(getResources().getStringArray(R.array.mtn_items));
-            ArrayAdapter<String> simpleAdapter = new ArrayAdapter<>(Mtn.this, R.layout.support_simple_spinner_dropdown_item, simpleList);
-            mtn_Spinner.setAdapter(simpleAdapter);
-            mtn_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-
-
-                @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-                @Override
-                public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                    switch (position) {
-
-                        case 0:
-//                        Toast.makeText(getApplicationContext(), "Make Your Selection", Toast.LENGTH_SHORT).show();
-                            break;
-
-                        case 1:
-
-                            /**
-                             * CALLING CLASS TO MAIN METHOED
-                             */
-
-//                            ServerConnection serverConnection = new ServerConnection();
-//                            try {
-//                                s = serverConnection.sendData("Hi VS17188N00794|18300", "Hi VS17188N00794|18300".length());
-//                            } catch (IOException e) {
-//                                e.printStackTrace();
-//                            }
-
-
-//                        Toast.makeText(getApplicationContext(), "Selected item 0", Toast.LENGTH_SHORT).show();
-                            break;
-
-                        case 2:
-                            Intent intent = new Intent(Mtn.this, MtnVend_1.class);
-                            startActivity(intent);
-                            Toast.makeText(getApplicationContext(), "Selected item 1", Toast.LENGTH_SHORT).show();
-                            break;
-
-                        case 3:
-                            Toast.makeText(getApplicationContext(), "Selected item 2", Toast.LENGTH_SHORT).show();
-                            break;
-                        default:
-
-                            break;
-                    }
-                }
-
-                @Override
-                public void onNothingSelected(AdapterView<?> parent) {
-
-                }
-            });
+        int i, j;
+        String sg;
+        privTV = (TextView) findViewById(R.id.textView);
+        String[] part1 = all_mtn.split(",");
+        List<String> list1 = new ArrayList<String>();
+        j = part1.length;
+        for (i = 0; i < j; ++i) {
+            sg = part1[i];
+            list1.add(sg);
         }
+        mtn_Spinner = (Spinner) findViewById(R.id.mtn_Spinner);
+        ArrayAdapter<String> dataAd1 = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, list1);
+        dataAd1.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        mtn_Spinner.setAdapter(dataAd1);
+
+        mtn_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+                msg2 = "";
+                int n = mtn_Spinner.getSelectedItemPosition();
+                privTV.setVisibility(View.VISIBLE);
+                switch (n) {
+                    case 0:
+                        prm = "";
+                        break;
+                    case 1:
+                        prm = "Airtime mtn5|2|1234|U|20111214|004528|0|";
+                        Toast.makeText(getApplicationContext(),"MTN R2", Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case 2:
+                        prm = "Airtime clc10|1|1234|U|20111214|004528|0|";
+                        Toast.makeText(getApplicationContext(),"MTN R4 Monthly Internet 5MB", Toast.LENGTH_SHORT).show();
+
+                        break;
+                    case 3:
+                        prm = "Airtime mtn5|2|1234|U|20111214|004528|0|";
+
+                        break;
+                    case 4:
+                        prm = "Airtime clc10|1|1234|U|20111214|004528|0|";
+
+                        break;
+                    case 5:
+                        prm = "Airtime mtn5|2|1234|U|20111214|004528|0|";
+
+                        break;
+                    case 6:
+                        prm = "Airtime clc10|1|1234|U|20111214|004528|0|";
+                        break;
+                    case 7:
+                        prm = "Airtime clc10|1|1234|U|20111214|004528|0|";
+                        break;
+                    case 8:
+                        prm = "Airtime clc10|1|1234|U|20111214|004528|0|";
+                        break;
+                    case 9:
+                        prm = "Airtime clc10|1|1234|U|20111214|004528|0|";
+                        break;
+                    case 10:
+                        prm = "Airtime clc10|1|1234|U|20111214|004528|0|";
+                        break;
+                    case 11:
+                        prm = "Airtime clc10|1|1234|U|20111214|004528|0|";
+                        break;
+                    case 12:
+                        prm = "Airtime clc10|1|1234|U|20111214|004528|0|";
+                        break;
+                    case 13:
+                        prm = "Airtime clc10|1|1234|U|20111214|004528|0|";
+                        break;
+                    case 14:
+                        prm = "Airtime clc10|1|1234|U|20111214|004528|0|";
+                        break;
+                    case 15:
+                        prm = "Airtime clc10|1|1234|U|20111214|004528|0|";
+                        break;
+                    default:
+                        prm = "";
+                        break;
+                }
+                thr = new Thread(new ClientThread());
+                thr.start();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parentView) {
+                prm = "";
+            }
+        });
+        /* * * * * * * * * * * * * * * * * */
+        tmr1 = new Timer();
+        tmr1.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (msg2.compareTo("") != 0) {
+                            privTV.setText(msg2);
+                            privTV.setVisibility(View.VISIBLE);
+                            msg2 = "";
+                        }
+                    }
+                });
+            }
+        }, 1500, 500);
     }
 
-//package com.example.nonhlanhla.sanlamskyapp.Activities;
-//
-//
-//        import android.annotation.TargetApi;
-//        import android.content.Intent;
-//        import android.os.Build;
-//        import android.support.annotation.RequiresApi;
-//        import android.support.v7.app.AppCompatActivity;
-//        import android.os.Bundle;
-//        import android.view.View;
-//        import android.widget.AdapterView;
-//        import android.widget.ArrayAdapter;
-//        import android.widget.Spinner;
-//        import android.widget.Toast;
-//
-//        import com.example.nonhlanhla.sanlamskyapp.Pojo.ServerConnection;
-//        import com.example.nonhlanhla.sanlamskyapp.R;
-//
-//        import java.io.IOException;
-//        import java.util.Arrays;
-//        import java.util.List;
-//
-//
-//public class Mtn extends AppCompatActivity {
-//
-//    Spinner mtn_Spinner;
-//    Thread t;
-//    private String s;
-//
-//
-//    @TargetApi(Build.VERSION_CODES.KITKAT)
-//    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-//    @Override
-//    protected void onCreate(final Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_mtn);
-//
-//        /**
-//         * Implements Runnable Thread
-//         */
-//        t = new Thread(new ServerConnection());
-//        t.start();
-//
-//
-//        mtn_Spinner = findViewById(R.id.mtn_Spinner);
-//        List<String> simpleList = Arrays.asList(getResources().getStringArray(R.array.mtn_items));
-//        ArrayAdapter<String> simpleAdapter = new ArrayAdapter<>(Mtn.this, R.layout.support_simple_spinner_dropdown_item, simpleList);
-//        mtn_Spinner.setAdapter(simpleAdapter);
-//        mtn_Spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//
-//
-//            @RequiresApi(api = Build.VERSION_CODES.KITKAT)
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                switch (position) {
-//
-//                    case 0:
-////                        Toast.makeText(getApplicationContext(), "Make Your Selection", Toast.LENGTH_SHORT).show();
-//                        break;
-//
-//                    case 1:
-//
-//                        /**
-//                         * CALLING CLASS TO MAIN METHOED
-//                         */
-//
-////                            ServerConnection serverConnection = new ServerConnection();
-////                            try {
-////                                s = serverConnection.sendData("Hi VS17188N00794|18300", "Hi VS17188N00794|18300".length());
-////                            } catch (IOException e) {
-////                                e.printStackTrace();
-////                            }
-//
-//
-////                        Toast.makeText(getApplicationContext(), "Selected item 0", Toast.LENGTH_SHORT).show();
-//                        break;
-//
-//                    case 2:
-//                        Intent intent = new Intent(Mtn.this, MtnVend_1.class);
-//                        startActivity(intent);
-//                        Toast.makeText(getApplicationContext(), "Selected item 1", Toast.LENGTH_SHORT).show();
-//                        break;
-//
-//                    case 3:
-//                        Toast.makeText(getApplicationContext(), "Selected item 2", Toast.LENGTH_SHORT).show();
-//                        break;
-//                    default:
-//
-//                        break;
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//
-//            }
-//        });
-//    }
-//}
+    private int Encaps2(byte[] b, int j) {
+        int i, n;
+        for (i = j + 1; i > 1; --i) {
+            b[i] = b[i - 2];
+        }
+        n = j;
+        b[1] = (byte) (n % 256);
+        n = n / 256;
+        b[0] = (byte) (n % 256);
+        return (j + 2);
+    }
+
+    private int TalkTo() {
+        int i, j0, j1;
+        byte[] bb;
+        byte[] buf0;
+        byte[] buf1;
+        msg1 = "";
+        if (msg0.length() == 0) return 0;
+        j0 = msg0.length();
+        bb = msg0.getBytes();
+        buf0 = new byte[1024];
+        for (i = 0; i < j0; ++i) buf0[i] = bb[i];
+        j0 = Encaps2(buf0, j0);
+        try {
+            OutputStream nos = skt.getOutputStream();
+            DataOutputStream dos = new DataOutputStream(nos);
+            dos.write(buf0, 0, j0);
+            dos.flush();
+            //----------
+            InputStream nis = skt.getInputStream();
+            DataInputStream dis = new DataInputStream(nis);
+            buf1 = new byte[1024];
+            j1 = dis.read(buf1, 0, 1024);
+            if (j1 >= 2) msg1 = new String(buf1, 2, j1 - 2);
+            else msg1 = "No Response!";
+        } catch (Exception ex) {
+            msg1 = "No " + ex.toString();
+        }
+        i = msg1.length();
+        return i;
+    }
+
+    public class ClientThread implements Runnable {
+        int j;
+        String sg, tg;
+
+        public void run() {
+            if (prm.compareTo("") == 0) return;
+            try {
+                skt = new Socket(sIP, nPN);
+                if (skt.isConnected()) {
+                    msg0 = "Hi VS17188N00794|18300";
+                    j = TalkTo();
+                    if (j == 0) {
+                        skt.close();
+                        return;
+                    }
+                    sg = msg1.substring(0, 2);
+                    if (sg.compareTo("Hi") != 0) {
+                        skt.close();
+                        return;
+                    }
+                    /* * */
+                    msg0 = "Airtime " + prm;
+                    j = TalkTo();
+                    if (j == 0) {
+                        skt.close();
+                        return;
+                    }
+                    sg = msg1.substring(0, 2);
+                    msg2 = msg1;
+                    if (sg.compareTo("Ok") != 0) {
+                        skt.close();
+                        return;
+                    }
+                    /* * */
+                    msg0 = "Bye";
+                    j = TalkTo();
+                    if (j == 0) {
+                        skt.close();
+                        return;
+                    }
+                    sg = msg1.substring(0, 2);
+                    if (sg.compareTo("Ok") != 0) {
+                        skt.close();
+                        return;
+                    }
+                    /* * */
+                    skt.close();
+                } else msg1 = "No Not connected";
+            } catch (Exception ex) {
+                msg1 = "No " + ex.toString();
+            }
+        }
+    }
+}
 
 
 
